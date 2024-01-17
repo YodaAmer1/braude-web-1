@@ -1,63 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTW App Template</title>
-    <!--
-        The tailwind CDN is designed for development purposes only, and is not the best choice for production.
-        Read more here: https://tailwindcss.com/docs/installation 
-    -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- example for dark theme styling when using tailwind cdn -->
+    <title>Calculator</title>
     <style>
-        /*examples for dark/light themes*/
-        .dark .dark\:text-white {
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #06503d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #calculator {
+            background-color: #070608;
+            border: 1px solid #040505;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        #display {
+            width: 100%;
+            height: 70px;
+            font-size: 24px;
+            border: none;
+            text-align: right;
+            padding: 0 10px;
+            outline: none;
+            background-color: #eee9e9;
+            border-bottom: 1px solid #070505;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .button {
+            flex: 1;
+            padding: 20px;
+            font-size: 20px;
+            text-align: center;
+            border: 1px solid #acb9b5;
+            border-radius: 5px;
+            background-color: #9e9393;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button.operator {
+            background-color: #0b7c64;
+            color: #080505;
+        }
+
+        .button.equal {
+            background-color: #0b7c64;
             color: #fff;
         }
-        .dark .dark\:bg-gray-800 {
-            background-color: #1e4b8a;
-        }
-        .light .light\:text-black {
-            color: #000000;
+
+        .button.clear {
+            background-color: #d9534f;
+            color: #050101;
         }
 
-        /*add your custom css rules here*/
+        .button:hover {
+            background-color: #fdfbff;
+        }
     </style>
 </head>
-
-<body class="dark:text-white light:text-black">
-    
-    <!-- your app code goes here -->
-
-    <!-- special scripts for integration in MTW gallery - must be placed at the bottom of the HTML after your code -->
-    <script>
-        // custom config for the MTW app 
-        const mtwAppConfig = {
-            border: true // app border in the MTW page                    
-        }
-
-        ///////////////////////////////////////////////////////
-        // implement this functions in order to use private API        
-        const sendPrivateApiRequest = async () => {
-            // your code here:
-            // sendRequestToParent({ cat: 'getAssets' })
-        }        
-
-        const acceptPrivateApiResponse = async (data) => {
-            // process received data here:
-            // console.log(data)
-        }
-
-        // use this in order to send on document load
-        document.addEventListener('DOMContentLoaded', () => {
-            // your code here:
-            //sendRequestToParent({ method: 'getAssets' })
-        })
-
-    </script>
-    <script src="https://morethanwallet.com/appstore/index.js"></script>
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <div class="row">
+            <button class="button clear">AC</button>
+            <button class="button operator">+/-</button>
+            <button class="button operator">%</button>
+            <button class="button operator">/</button>
+        </div>
+        <div class="row">
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button operator">×</button>
+        </div>
+        <div class="row">
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button operator">-</button>
+        </div>
+        <div class="row">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button operator">+</button>
+        </div>
+        <div class="row">
+            <button class="button">0</button>
+            <button class="button">.</button>
+            <button class="button equal">=</button>
+        </div>
+    </div>
 </body>
-
 </html>
